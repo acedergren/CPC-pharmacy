@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Riktiga Apoteket – Start</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-white shadow">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/demos/cpc/" class="flex items-center">
+        <span class="ml-2 text-2xl font-bold text-green-600">riktigaapoteket</span>
+      </a>
+      <div>
+        <a href="/demos/cpc/checkout.html" class="px-3 py-1 text-gray-700 hover:text-green-600">Kassa</a>
+        <button id="attack-toggle" class="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
+          Attack: Off
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold mb-6">Populära Produkter</h1>
+    <div id="product-grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+  </main>
+
+  <script src="/demos/cpc/js/attack-toggle.js"></script>
+  <script src="/demos/cpc/js/products.js"></script>
+  <script src="/demos/cpc/js/main.js"></script>
+</body>
+</html>
