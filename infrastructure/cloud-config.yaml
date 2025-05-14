@@ -1,0 +1,21 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - git
+  - curl
+  - build-essential
+runcmd:
+  # Install Node.js 18 via NodeSource
+  - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+  - apt-get install -y nodejs
+  # Clone demo repo (replace with your GitHub or local path)
+  - git clone https://github.com/acedergren/CPC-pharmacy.git /opt/cpc-demo
+  - cd /opt/cpc-demo
+  - npm install
+  # Start both servers with pm2 for resilience
+  - npm install -g pm2
+  - pm2 start src/server.js --name cpc-store -- --port 80
+  - pm2 start attacker-server/attacker-server.js --name cpc-attacker -- --port 4000
+  - pm2 save
+  - pm2 startup systemd

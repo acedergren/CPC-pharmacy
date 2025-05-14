@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Riktiga Apoteket – Start</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Riktiga Apoteket</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://p11.techlab-cdn.com/682435267ca7760a588e9511.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <nav class="bg-white shadow">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="/demos/cpc/" class="flex items-center">
-        <span class="ml-2 text-2xl font-bold text-green-600">riktigaapoteket</span>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center">
+        <img src="/images/riktigaapoteket-logo.png" alt="Riktiga Apoteket" class="h-10 w-auto" />
+        <span class="ml-2 text-2xl font-bold text-green-600">riktigaapoteket.se</span>
       </a>
-      <div>
-        <a href="/demos/cpc/checkout.html" class="px-3 py-1 text-gray-700 hover:text-green-600">Kassa</a>
-        <button id="attack-toggle" class="ml-4 px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600">
-          Attack: Off
-        </button>
-      </div>
+      <button id="attack-toggle" class="px-3 py-1 bg-red-500 text-white rounded">Attack: Off</button>
     </div>
-  </nav>
+    <nav class="bg-white border-t border-b">
+      <div class="container mx-auto px-4 flex space-x-6 py-2 overflow-x-auto">
+        <a href="#" class="text-gray-600 hover:text-green-600">Receptbelagt</a>
+        <a href="#" class="text-gray-600 hover:text-green-600">Hälsa</a>
+        <a href="#" class="text-gray-600 hover:text-green-600">Hudvård</a>
+        <a href="#" class="text-gray-600 hover:text-green-600">Barn och baby</a>
+        <a href="#" class="text-gray-600 hover:text-green-600">Kosttillskott</a>
+        <a href="#" class="text-gray-600 hover:text-green-600">Rea</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container mx-auto px-4 mt-6">
+    <div class="bg-green-100 rounded-lg p-6 flex items-center">
+      <div class="flex-1">
+        <h2 class="text-2xl font-bold mb-2">Välkommen till Riktiga Apoteket</h2>
+        <p class="text-gray-700">Upptäck våra mest populära hälsoprodukter med fri frakt över 299 kr.</p>
+      </div>
+      <img src="/images/health-banner.png" alt="Hälsa" class="ml-4 h-24" />
+    </div>
+  </section>
 
   <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-semibold mb-6">Populära Produkter</h1>
-    <div id="product-grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></div>
+    <h3 class="text-xl font-semibold mb-4">Populära Produkter</h3>
+    <div id="product-grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5"></div>
   </main>
 
-  <script src="/demos/cpc/js/attack-toggle.js"></script>
-  <script src="/demos/cpc/js/products.js"></script>
-  <script src="/demos/cpc/js/main.js"></script>
+  <footer class="bg-white border-t py-6 text-gray-600 text-sm">
+    <div class="container mx-auto px-4 flex justify-between">
+      <div>
+        <a href="#" class="block hover:text-green-600">Om Apoteket</a>
+        <a href="#" class="block hover:text-green-600">Kontakta oss</a>
+        <a href="#" class="block hover:text-green-600">Integritet</a>
+      </div>
+      <div>&copy; 2025 Riktiga Apoteket AB</div>
+    </div>
+  </footer>
+
+  <script src="/js/attack-toggle.js"></script>
+  <script src="/js/products.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

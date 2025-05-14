@@ -1,21 +1,11 @@
-const toggleButtons = document.querySelectorAll('#attack-toggle');
-defaultState();
-toggleButtons.forEach(btn => btn.addEventListener('click', () => {
-  const mode = localStorage.getItem('attackMode') === 'on' ? 'off' : 'on';
-  localStorage.setItem('attackMode', mode);
-  updateButtons();
+const btns = document.querySelectorAll('#attack-toggle');
+if (!localStorage.getItem('attackMode')) localStorage.setItem('attackMode','off');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  const m = localStorage.getItem('attackMode')==='on'?'off':'on';
+  localStorage.setItem('attackMode',m); update();
 }));
-function defaultState() {
-  if (!localStorage.getItem('attackMode')) {
-    localStorage.setItem('attackMode', 'off');
-  }
-  updateButtons();
+function update(){
+  const m=localStorage.getItem('attackMode');
+  btns.forEach(b=>{ b.textContent='Attack: '+m.toUpperCase(); b.className=m==='on'?'bg-green-500 text-white':'bg-red-500 text-white'; });
 }
-function updateButtons() {
-  const mode = localStorage.getItem('attackMode');
-  toggleButtons.forEach(btn => {
-    btn.textContent = `Attack: ${mode.toUpperCase()}`;
-    btn.classList.toggle('bg-red-500', mode === 'off');
-    btn.classList.toggle('bg-green-500', mode === 'on');
-  });
-}
+update();

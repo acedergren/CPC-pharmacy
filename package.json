@@ -1,14 +1,14 @@
 {
   "name": "riktigaapoteket-demo",
   "version": "1.0.0",
-  "description": "Demo pharmacy e-commerce for Akamai CPC with attack toggle",
+  "description": "Demo Swedish pharmacy with Akamai CPC demo",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "start:attacker": "node attacker-server/attacker-server.js"
   },
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "express": "^4.21.2"
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0"
   }
 }
