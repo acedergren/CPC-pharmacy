@@ -1,0 +1,22 @@
+# Node.js
+node_modules/
+npm-debug.log
+.env
+
+# macOS
+.DS_Store
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Zip files
+*.zip
+
+# pm2 logs
+logs/
+
+# Other
+public/locales/
+public/data/

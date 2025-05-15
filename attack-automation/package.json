@@ -1,0 +1,17 @@
+{
+  "name": "attack-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulateBreach.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "axios": "^1.9.0",
+    "faker": "^6.6.6"
+  }
+}

@@ -6,6 +6,37 @@
   <title>Kassa – Riktiga Apoteket</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://p11.techlab-cdn.com/682435267ca7760a588e9511.js"></script>
+  <script src="https://unpkg.com/i18next@21/dist/umd/i18next.min.js"></script>
+<script>
+  // 1. Find or default to browser lang
+  const lang = localStorage.getItem('lang') ||
+               (navigator.language || 'en').split('-')[0];
+  // 2. Initialize i18next
+  i18next.init({
+    lng: ['sv','no','da','fi','is','en','nl'].includes(lang) ? lang : 'en',
+    fallbackLng: 'en',
+    debug: false,
+    resources: {}  // we’ll load afterwards
+  }).then(() => {
+    // 3. Load translation file
+    fetch(`/locales/${i18next.language}/translation.json`)
+      .then(r => r.json())
+      .then(res => {
+        i18next.addResources(i18next.language, 'translation', res);
+        // 4. Replace all [data-i18n] elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.innerHTML = i18next.t(key, { price: el.dataset.price });
+        });
+      });
+  });
+
+  // 5. Language selector handler
+  function changeLang(newLang) {
+    localStorage.setItem('lang', newLang);
+    location.reload();
+  }
+</script>
 </head>
 <body class="bg-gray-100 text-gray-800">
   <nav class="bg-white shadow mb-6">
@@ -15,6 +46,17 @@
         <span class="ml-2 text-2xl font-bold text-green-600">riktigaapoteket.se</span>
       </a>
       <button id="attack-toggle" class="px-3 py-1 bg-red-500 text-white rounded">Attack: Off</button>
+     <!-- Language selector -->
+      <select onchange="changeLang(this.value)"
+              class="border rounded px-2 py-1 text-sm">
+        <option value="sv">SV</option>
+        <option value="no">NO</option>
+        <option value="dk">DK</option>
+        <option value="fi">FI</option>
+        <option value="is">IS</option>
+        <option value="en">EN</option>
+        <option value="nl">NL</option>
+      </select>
     </div>
   </nav>
 
@@ -58,7 +100,14 @@
           </div>
         </div>
       </div>
-
+      <!-- Demo confirmation -->
+      <div class="flex items-center space-x-2">
+        <input id="demo-confirm" type="checkbox" required
+               class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-400"/>
+        <label for="demo-confirm" class="text-gray-700 text-sm">
+          Jag förstår att detta är en demo och lovar på min mammas grav att jag inte har angivit några riktiga uppgifter eller kortnummer.
+        </label>
+      </div>
       <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">
         Betala <span id="price-label">0</span> kr
       </button>
